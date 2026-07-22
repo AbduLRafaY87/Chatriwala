@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import image from "../../assets/Herobg3.gif"
+import image from "../../assets/HeroBg3.gif"
 
 const ROLES = ["Brand Identity", "Web Experiences", "Motion Design", "Product Strategy"]
 
