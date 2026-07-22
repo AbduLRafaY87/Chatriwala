@@ -1,0 +1,29 @@
+.loader {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.loader--fullscreen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  z-index: 9999;
+  font-size: var(--fs-lg);
+}
+
+.loader__cursor {
+  color: var(--color-accent);
+  animation: loader-blink 1s step-end infinite;
+}
+
+@keyframes loader-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

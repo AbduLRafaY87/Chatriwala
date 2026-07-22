@@ -1,0 +1,608 @@
+.contact-page {
+  background: var(--color-bg);
+  margin-top: -80px;
+}
+
+.contact-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-secondary);
+  margin-bottom: 1.2rem;
+}
+
+/* ---- Scroll reveal ---- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================ */
+/* HERO                         */
+/* ============================ */
+
+.contact-hero {
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 18rem 6vw 4rem;
+  overflow: hidden;
+}
+
+.contact-grid-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--color-border) 0 1px,
+      transparent 1px 80px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      var(--color-border) 0 1px,
+      transparent 1px 80px
+    );
+  opacity: 0.3;
+  mask-image: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    black,
+    transparent 70%
+  );
+  pointer-events: none;
+  transition: mask-image 0.2s ease;
+}
+
+.contact-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: clamp(8rem, 22vw, 20rem);
+  font-weight: 700;
+  color: var(--color-text);
+  opacity: 0.03;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+.contact-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.contact-hero-headline {
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-text-faint);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.contact-hero-accent {
+  display: block;
+  margin-top: 0.3rem;
+  font-style: normal;
+  font-weight: 700;
+  background: linear-gradient(
+    100deg,
+    var(--color-text) 45%,
+    var(--color-accent) 110%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.contact-hero-sub {
+  margin-top: 1.6rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+}
+
+/* ============================ */
+/* CONVERSATION                 */
+/* ============================ */
+
+.contact-conversation {
+  padding: 6rem 6vw;
+}
+
+.contact-conversation-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.contact-intro-headline {
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-text-faint);
+  line-height: 1.15;
+  margin-bottom: 1.4rem;
+}
+
+.contact-intro-accent {
+  display: block;
+  margin-top: 0.2rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.contact-intro-sub {
+  max-width: 440px;
+  margin-bottom: 3rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.contact-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact-info-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.contact-info-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.contact-info-link {
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.contact-info-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+.contact-info-link:hover {
+  color: var(--color-accent);
+}
+.contact-info-link:hover::after {
+  width: 100%;
+}
+
+.contact-info-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-success);
+  animation: pulseDot 2s infinite;
+}
+
+/* ---- Form card ---- */
+.contact-form-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.contact-form-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1.2rem;
+  background: var(--color-bg-elevated-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact-form-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.contact-form-dot-red {
+  background: var(--color-error);
+}
+.contact-form-dot-yellow {
+  background: var(--color-accent);
+}
+.contact-form-dot-green {
+  background: var(--color-success);
+}
+
+.contact-form-title {
+  margin-left: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-faint);
+}
+
+.contact-form-body {
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.contact-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.contact-field-key {
+  padding-top: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-accent-secondary);
+  white-space: nowrap;
+}
+
+.contact-field-input-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.contact-field-input-wrap input,
+.contact-field-input-wrap textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 0.2rem 0.6rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: var(--color-text);
+  outline: none;
+  resize: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact-field-input-wrap textarea {
+  padding-top: 1.3rem;
+}
+
+.contact-field-input-wrap input:focus,
+.contact-field-input-wrap textarea:focus {
+  border-color: var(--color-accent);
+}
+
+.contact-field-input-wrap label {
+  position: absolute;
+  left: 0.2rem;
+  top: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: var(--color-text-faint);
+  pointer-events: none;
+  transition:
+    top 0.25s ease,
+    font-size 0.25s ease,
+    color 0.25s ease;
+}
+
+.contact-field-input-wrap input:focus + label,
+.contact-field-input-wrap input:not(:placeholder-shown) + label,
+.contact-field-input-wrap textarea:focus + label,
+.contact-field-input-wrap textarea:not(:placeholder-shown) + label {
+  top: -0.7rem;
+  font-size: 0.75rem;
+  color: var(--color-accent-secondary);
+}
+
+.contact-submit {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+  padding: 0.9rem 1.8rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.contact-submit:hover:not(:disabled) {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.contact-submit.sending {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.contact-submit.sent {
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.contact-submit-arrow {
+  transition: transform 0.3s ease;
+}
+.contact-submit:hover .contact-submit-arrow {
+  transform: translateX(4px);
+}
+
+/* ============================ */
+/* SOCIAL                        */
+/* ============================ */
+
+.contact-social {
+  padding: 6rem 6vw;
+  border-top: 1px solid var(--color-border);
+}
+
+.contact-social-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact-social-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  transition:
+    padding-left 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.contact-social-row:hover {
+  padding-left: 1rem;
+  border-color: var(--color-border-strong);
+}
+
+.contact-social-index {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.contact-social-label {
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--color-text);
+  transition: color 0.35s ease;
+}
+
+.contact-social-row:hover .contact-social-label {
+  color: var(--color-accent);
+}
+
+.contact-social-handle {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-text-faint);
+  flex: 1;
+}
+
+.contact-social-arrow {
+  font-size: 1.4rem;
+  color: var(--color-text-faint);
+  opacity: 0;
+  transform: translate(-6px, 6px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    color 0.35s ease;
+}
+
+.contact-social-row:hover .contact-social-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+  color: var(--color-accent);
+}
+
+/* ============================ */
+/* CLOSING                       */
+/* ============================ */
+
+.contact-closing {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 6vw;
+  overflow: hidden;
+}
+
+.contact-closing-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(245, 166, 35, 0.1),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.contact-closing-headline {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-text-faint);
+  line-height: 1.15;
+  margin-bottom: 2.5rem;
+}
+
+.contact-closing-accent {
+  display: block;
+  margin-top: 0.3rem;
+  font-style: normal;
+  font-weight: 700;
+  background: linear-gradient(
+    100deg,
+    var(--color-text) 45%,
+    var(--color-accent) 110%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.contact-closing-cta {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.1rem 2.2rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  text-decoration: none;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.contact-closing-cta:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.contact-cta-arrow {
+  transition: transform 0.3s ease;
+}
+.contact-closing-cta:hover .contact-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ---- Keyframes ---- */
+@keyframes pulseDot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(111, 207, 151, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(111, 207, 151, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(111, 207, 151, 0);
+  }
+}
+
+/* ============================ */
+/* RESPONSIVE                    */
+/* ============================ */
+
+@media (max-width: 900px) {
+  .contact-conversation-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .contact-social-label {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+  .contact-social-handle {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-hero {
+    padding: 6rem 5vw 3rem;
+    min-height: 80vh;
+  }
+  .contact-conversation {
+    padding: 4rem 5vw;
+  }
+  .contact-form-body {
+    padding: 1.6rem;
+  }
+  .contact-field {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .contact-field-key {
+    padding-top: 0;
+  }
+  .contact-social {
+    padding: 4rem 5vw;
+  }
+  .contact-social-row {
+    gap: 0.8rem;
+  }
+  .contact-closing {
+    padding: 4rem 5vw;
+    min-height: 60vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .contact-info-dot {
+    animation: none !important;
+  }
+}

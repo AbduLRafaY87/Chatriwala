@@ -1,0 +1,250 @@
+.approach-section {
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 6vw;
+    background: var(--color-bg);
+}
+
+.approach-grid-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        repeating-linear-gradient(90deg, var(--color-border) 0 1px, transparent 1px 80px),
+        repeating-linear-gradient(0deg, var(--color-border) 0 1px, transparent 1px 80px);
+    opacity: 0.25;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+    pointer-events: none;
+}
+
+.approach-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ---- Header ---- */
+.approach-header {
+    max-width: 640px;
+    margin-bottom: 6rem;
+}
+
+.approach-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-secondary);
+    margin-bottom: 1.2rem;
+}
+
+.approach-headline {
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--color-text-faint);
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+}
+
+.approach-headline-accent {
+    display: block;
+    margin-top: 0.2rem;
+    font-style: normal;
+    font-weight: 700;
+    background: linear-gradient(100deg, var(--color-text) 45%, var(--color-accent) 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.approach-sub {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    color: var(--color-text-muted);
+}
+
+/* ---- Thread (progress spine) ---- */
+.approach-thread {
+    position: absolute;
+    left: 6vw;
+    top: 20rem;
+    bottom: 8rem;
+    width: 1px;
+    background: var(--color-border);
+    z-index: 0;
+}
+
+.approach-thread-progress {
+    width: 100%;
+    background: linear-gradient(to bottom, var(--color-accent-secondary), var(--color-accent));
+    transition: height 0.4s ease;
+}
+
+/* ---- Stages ---- */
+.approach-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+}
+
+.approach-stage {
+    position: relative;
+}
+
+/* Giant background number */
+.approach-stage-num {
+    position: absolute;
+    top: -3rem;
+    right: -1rem;
+    font-family: var(--font-mono);
+    font-size: clamp(6rem, 14vw, 11rem);
+    font-weight: 700;
+    color: var(--color-text);
+    opacity: 0.03;
+    line-height: 1;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, color 0.5s ease;
+}
+
+.approach-stage.is-active .approach-stage-num {
+    opacity: 0.06;
+    color: var(--color-accent);
+}
+
+.approach-stage-content {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    padding-left: 3rem;
+}
+
+.approach-stage-index-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.approach-stage-index {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-faint);
+    transition: color 0.5s ease;
+}
+
+.approach-stage.is-active .approach-stage-index {
+    color: var(--color-accent);
+}
+
+.approach-stage-line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+    transition: background 0.5s ease;
+}
+
+.approach-stage.is-active .approach-stage-line {
+    background: var(--color-accent-secondary);
+}
+
+.approach-stage-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--color-text);
+    margin-bottom: 1.2rem;
+}
+
+.approach-stage-philosophy {
+    font-family: "Space Grotesk", sans-serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-faint);
+    border-left: 2px solid var(--color-border-strong);
+    padding-left: 1.2rem;
+    margin-bottom: 1.4rem;
+    transition: border-color 0.5s ease;
+}
+
+.approach-stage.is-active .approach-stage-philosophy {
+    border-color: var(--color-accent);
+}
+
+.approach-stage-desc {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    margin-bottom: 1.6rem;
+}
+
+.approach-stage-outcome {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.6rem 1.1rem;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+}
+
+.approach-stage-outcome-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-faint);
+}
+
+.approach-stage-outcome-value {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.85rem;
+    color: var(--color-text);
+}
+
+/* ---- Closing ---- */
+.approach-closing {
+    text-align: center;
+    margin-top: 7rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.approach-closing-text {
+    font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--color-text-faint);
+    line-height: 1.5;
+}
+
+.approach-closing-accent {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .approach-thread { left: 5vw; }
+    .approach-stage-content { padding-left: 2rem; }
+    .approach-stage-num { font-size: clamp(4rem, 20vw, 6rem); right: -0.5rem; }
+    .approach-stages { gap: 5rem; }
+}
+
+@media (max-width: 480px) {
+    .approach-section { padding: 5rem 5vw; }
+    .approach-thread { display: none; }
+    .approach-stage-content { padding-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .approach-header, .approach-stage {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .approach-stage-content { opacity: 1 !important; }
+}
