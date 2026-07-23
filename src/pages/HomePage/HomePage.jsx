@@ -6,6 +6,7 @@ import ProjectsShowcaseSection from './ProjectsSection'
 import TechStackSection from './TechStackSection'
 import { routeSeo } from '../../seo/routeSeo'
 import PageSEO from '../../components/common/PageSEO.jsx'
+import InstagramShowcase from '../../components/layout/InstagramShowcase.jsx'
 
 export default function HomePage() {
   return (
@@ -36,6 +37,7 @@ export default function HomePage() {
       <ProjectsShowcaseSection/>
       <ApproachSection/>
       <TechStackSection/>
+      <InstagramShowcase/>
     </main>
     </>
   )
