@@ -28,7 +28,7 @@ export default function BlogsPage() {
     return (
         <>
             <PageSEO
-                pageKey="blogs"
+                pageKey="Blogs"
                 title={routeSeo.blogs.title}
                 description={routeSeo.blogs.description}
                 url={routeSeo.blogs.canonical}

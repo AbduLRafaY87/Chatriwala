@@ -26,17 +26,17 @@ function App() {
       <ErrorBoundary>
         <Navbar />
         <Routes>
-          <Route path="/" element={<PageSEO pageKey="home"><HomePage /></PageSEO>} />
-          <Route path="/about" element={<PageSEO pageKey="about"><AboutPage /></PageSEO>} />
-          <Route path="/projects" element={<PageSEO pageKey="projects"><ProjectsPage /></PageSEO>} />
-          <Route path="/projects/:slug" element={<PageSEO pageKey="projects"><ProjectDetailPage /></PageSEO>} />
-          <Route path="/services" element={<PageSEO pageKey="services"><ServicesPage /></PageSEO>} />
-          <Route path="/blogs" element={<PageSEO pageKey="blogs"><BlogsPage /></PageSEO>} />
-          <Route path="/blogs/:id" element={<PageSEO pageKey="blogs"><BlogDetail /></PageSEO>} />
-          <Route path="/tools" element={<PageSEO pageKey="tools"><ToolsPage /></PageSEO>} />
-          <Route path="/get-in-touch" element={<PageSEO pageKey="contact"><ContactPage /></PageSEO>} />
-          <Route path="/privacy-policy" element={<PageSEO pageKey="privacy"><PrivacyPolicy /></PageSEO>} />
-          <Route path="*" element={<PageSEO pageKey="not-found" title="Page Not Found" description="The requested page could not be found on Chatriwala." robots="noindex,follow"><NotFoundPage /></PageSEO>} />
+          <Route path="/" element={<PageSEO pageKey="Home"><HomePage /></PageSEO>} />
+          <Route path="/about" element={<PageSEO pageKey="About"><AboutPage /></PageSEO>} />
+          <Route path="/projects" element={<PageSEO pageKey="Projects"><ProjectsPage /></PageSEO>} />
+          <Route path="/projects/:slug" element={<PageSEO pageKey="Projects"><ProjectDetailPage /></PageSEO>} />
+          <Route path="/services" element={<PageSEO pageKey="Services"><ServicesPage /></PageSEO>} />
+          <Route path="/blogs" element={<PageSEO pageKey="Blogs"><BlogsPage /></PageSEO>} />
+          <Route path="/blogs/:id" element={<PageSEO pageKey="Blogs"><BlogDetail /></PageSEO>} />
+          <Route path="/tools" element={<PageSEO pageKey="Tools"><ToolsPage /></PageSEO>} />
+          <Route path="/get-in-touch" element={<PageSEO pageKey="Contact"><ContactPage /></PageSEO>} />
+          <Route path="/privacy-policy" element={<PageSEO pageKey="Privacy"><PrivacyPolicy /></PageSEO>} />
+          <Route path="*" element={<PageSEO pageKey="Not-found" title="Page Not Found" description="The requested page could not be found on Chatriwala." robots="noindex,follow"><NotFoundPage /></PageSEO>} />
         </Routes>
         <Footer />
       </ErrorBoundary>

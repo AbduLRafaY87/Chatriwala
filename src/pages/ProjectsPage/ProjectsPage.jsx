@@ -50,7 +50,7 @@ export default function ProjectsPage() {
     return (
         <>
             <PageSEO
-                pageKey="projects"
+                pageKey="Projects"
                 title={routeSeo.projects.title}
                 description={routeSeo.projects.description}
                 url={routeSeo.projects.canonical}

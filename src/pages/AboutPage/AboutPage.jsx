@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <>
       <PageSEO
-        pageKey="about"
+        pageKey="About"
         title={routeSeo.about.title}
         description={routeSeo.about.description}
         url={routeSeo.about.canonical}

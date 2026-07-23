@@ -74,7 +74,7 @@ const PrivacyPolicy = () => {
     return (
         <>
             <PageSEO
-                pageKey="privacy"
+                pageKey="pPrivacy"
                 title={routeSeo.privacy.title}
                 description={routeSeo.privacy.description}
                 url={routeSeo.privacy.canonical}

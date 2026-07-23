@@ -1,6 +1,6 @@
 .contact-page {
   background: var(--color-bg);
-  margin-top: -80px;
+  /* margin-top: -80px; */
 }
 
 .contact-eyebrow {
@@ -371,6 +371,11 @@
   color: var(--color-success);
 }
 
+.contact-submit.error {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
 .contact-submit-arrow {
   transition: transform 0.3s ease;
 }
@@ -605,4 +610,13 @@
   .contact-info-dot {
     animation: none !important;
   }
+}
+
+.error-msg {
+  color: var(--color-error);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+  animation: fadeIn 0.2s ease forwards;
 }

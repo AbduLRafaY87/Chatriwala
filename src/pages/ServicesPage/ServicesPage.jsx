@@ -8,7 +8,7 @@ export default function ServicesPage() {
   return (
     <>
       <PageSEO
-        pageKey="services"
+        pageKey="Services"
         title={routeSeo.services.title}
         description={routeSeo.services.description}
         url={routeSeo.services.canonical}
