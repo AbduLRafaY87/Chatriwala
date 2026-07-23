@@ -508,7 +508,8 @@
 .about-photo {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 600px;
+  /* aspect-ratio: 4/5; */
   object-fit: cover;
   filter: grayscale(15%);
 }
@@ -755,6 +756,21 @@
 @media (max-width: 480px) {
   .about-section {
     padding: 5rem 5vw;
+  }
+  .hero-visual{
+    display: none;
+  }
+  .project{
+    flex-wrap: wrap;
+  }
+  .project .image {
+    height: 40% !important;
+  }
+  .project .content .project-title{
+    font-size: 1.5rem !important;
+  }
+  .project .content a{
+    display: none !important;
   }
   .about-badge {
     position: static;

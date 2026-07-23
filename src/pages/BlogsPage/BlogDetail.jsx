@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import blogs from '../../data/blogData'
+import PageSEO from '../../components/common/PageSEO.jsx'
 
 const formatDate = (dateStr) =>
     new Date(dateStr).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
@@ -51,6 +52,27 @@ const BlogDetail = () => {
     const nextPost = sorted[(index + 1) % sorted.length]
 
     return (
+        <>
+            <PageSEO
+                title={post.title}
+                description={post.excerpt}
+                url={`https://archatriwala.com/blogs/${post.id}`}
+                type="Article"
+                robots="index,follow"
+                schema={{
+                    '@context': 'https://schema.org',
+                    '@type': 'BlogPosting',
+                    headline: post.title,
+                    description: post.excerpt,
+                    author: {
+                        '@type': 'Person',
+                        name: post.writer
+                    },
+                    datePublished: post.date,
+                    image: `https://archatriwala.com${post.img}`,
+                    url: `https://archatriwala.com/blogs/${post.id}`
+                }}
+            />
         <main className="blog-detail-page" ref={pageRef}>
             <div className="blogs-progress" style={{ width: `${progress}%` }} aria-hidden="true" />
 
@@ -78,7 +100,7 @@ const BlogDetail = () => {
 
             {/* ---- Cover image ---- */}
             <section className="blog-detail-cover reveal-on-scroll">
-                <img src={post.img} alt={post.title} />
+                <img src={post.img} alt={post.title} width="1400" height="900" loading="eager" decoding="async" />
             </section>
 
             {/* ---- Article body ---- */}
@@ -108,6 +130,7 @@ const BlogDetail = () => {
                 </Link>
             </section>
         </main>
+        </>
     )
 }
 

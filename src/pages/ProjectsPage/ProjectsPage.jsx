@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import projects from '../../data/projects'
 import './ProjectsPage.css'
+import PageSEO from '../../components/common/PageSEO.jsx'
+import { routeSeo } from '../../seo/routeSeo'
 
 const CATEGORIES = ['All', ...new Set(projects.map((p) => p.category))]
 const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
@@ -46,6 +48,22 @@ export default function ProjectsPage() {
     }
 
     return (
+        <>
+            <PageSEO
+                pageKey="projects"
+                title={routeSeo.projects.title}
+                description={routeSeo.projects.description}
+                url={routeSeo.projects.canonical}
+                type="CollectionPage"
+                robots={routeSeo.projects.robots}
+                schema={{
+                    '@context': 'https://schema.org',
+                    '@type': 'CollectionPage',
+                    name: 'Projects & Case Studies',
+                    url: 'https://archatriwala.com/projects',
+                    description: routeSeo.projects.description
+                }}
+            />
         <main className="projects-page">
             {/* ---- Hero ---- */}
             <section className="projects-page-hero">
@@ -118,15 +136,8 @@ export default function ProjectsPage() {
             </section>
 
             {/* ---- Closing ---- */}
-            <section className="projects-page-closing reveal-on-scroll">
-                <p className="projects-page-closing-text">
-                    Have something in mind that isn't here yet?
-                </p>
-                <Link to="/contact" className="projects-page-closing-cta">
-                    <span>Let's build it</span>
-                    <span aria-hidden="true">→</span>
-                </Link>
-            </section>
         </main>
+        </>
+
     )
 }

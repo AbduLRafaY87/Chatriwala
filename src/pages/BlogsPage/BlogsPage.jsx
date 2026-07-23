@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import blogs from '../../data/blogData'
 import './BlogsPage.css'
+import PageSEO from '../../components/common/PageSEO.jsx'
+import { routeSeo } from '../../seo/routeSeo'
 
 const formatDate = (dateStr) =>
     new Date(dateStr).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
@@ -24,6 +26,22 @@ export default function BlogsPage() {
     }
 
     return (
+        <>
+            <PageSEO
+                pageKey="blogs"
+                title={routeSeo.blogs.title}
+                description={routeSeo.blogs.description}
+                url={routeSeo.blogs.canonical}
+                type="Blog"
+                robots={routeSeo.blogs.robots}
+                schema={{
+                    '@context': 'https://schema.org',
+                    '@type': 'Blog',
+                    name: 'Technical Articles & Insights',
+                    url: 'https://archatriwala.com/blogs',
+                    description: routeSeo.blogs.description
+                }}
+            />
         <main className="blogs-page">
             {/* ---- Hero ---- */}
             <section className="blogs-hero">
@@ -52,7 +70,7 @@ export default function BlogsPage() {
                 >
                     <div className="blogs-featured-glow" aria-hidden="true" />
                     <div className="blogs-featured-media">
-                        <img src={featured.img} alt={featured.title} loading="lazy" />
+                        <img src={featured.img} alt={featured.title} loading="lazy" decoding="async" width="900" height="600" />
                         <span className="blogs-featured-tag">Latest</span>
                     </div>
                     <div className="blogs-featured-panel">
@@ -100,7 +118,7 @@ export default function BlogsPage() {
                         >
                             <div className="blog-card-glow" aria-hidden="true" />
                             <div className="blog-card-media">
-                                <img src={post.img} alt={post.title} loading="lazy" />
+                                <img src={post.img} alt={post.title} loading="lazy" decoding="async" width="900" height="600" />
                             </div>
                             <div className="blog-card-body">
                                 <div className="blog-card-meta-row">
@@ -144,5 +162,7 @@ export default function BlogsPage() {
                 </Link>
             </section>
         </main>
+        </>
+
     )
 }

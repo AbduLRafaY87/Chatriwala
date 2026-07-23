@@ -78,6 +78,7 @@ const HeroSection = () => {
                         <a
                             href="/projects"
                             className="hero-cta"
+                            aria-label="Browse Abdul Rafay Chatriwala project portfolio"
                             onMouseMove={handleMagnetMove}
                             onMouseLeave={resetMagnet}
                         >
@@ -94,7 +95,7 @@ const HeroSection = () => {
 
                 <div className="hero-visual">
                     <div className="hero-visual-frame" aria-hidden="true">
-                        <img src={image} alt="" className="hero-background" />
+                        <img src={image} alt="Abstract creative web development interface" className="hero-background" width="900" height="640" loading="eager" decoding="async" />
                     </div>
 
                     {/* <div className="terminal-card">

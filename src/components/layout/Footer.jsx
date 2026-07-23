@@ -2,10 +2,10 @@ import React from 'react'
 import './Footer.css'
 
 const NAV_LINKS = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Work", href: "#work" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Work", href: "/projects" },
+    { label: "Contact", href: "/get-in-touch" },
 ]
 
 const SOCIAL_LINKS = [
@@ -31,7 +31,7 @@ const Footer = () => {
     }
 
     return (
-        <footer className="footer-section">
+        <footer className="footer-section" role="contentinfo">
             <div className="footer-grid-overlay" aria-hidden="true" />
             <span className="footer-bg-text" aria-hidden="true">TALK</span>
 
@@ -72,7 +72,7 @@ const Footer = () => {
 
                     <div className="footer-column">
                         <p className="footer-column-title">Navigate</p>
-                        <nav className="footer-nav">
+                        <nav className="footer-nav" aria-label="Footer navigation">
                             {NAV_LINKS.map((link) => (
                                 <a key={link.label} href={link.href} className="footer-link">
                                     {link.label}

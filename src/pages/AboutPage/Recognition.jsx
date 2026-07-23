@@ -69,7 +69,7 @@ const exhibits = [
         tag: "Top Honor",
         description: "Presented under the management of Mrs. Shabih Zehra for academic performance, 2021–22 session.",
         images: [academics1st],
-        weight: "large",
+        weight: "medium",
     },
     {
         id: 'academics-3rd',

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" rx="32" fill="#06070b"/>
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="#10121a" stroke="#2f80ed" stroke-width="2"/>
+  <path d="M240 430h320" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+  <path d="M240 370h420" stroke="#7dd3fc" stroke-width="12" stroke-linecap="round"/>
+  <path d="M240 310h420" stroke="#38bdf8" stroke-width="12" stroke-linecap="round"/>
+  <text x="240" y="238" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="700">Abdul Rafay Chatriwala</text>
+  <text x="240" y="286" fill="#8ec4ff" font-family="Inter, Arial, sans-serif" font-size="28">Full-Stack Developer • SEO Engineer • Product Builder</text>
+</svg>

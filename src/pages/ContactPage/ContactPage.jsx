@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './ContactPage.css'
+import PageSEO from '../../components/common/PageSEO.jsx'
+import { routeSeo } from '../../seo/routeSeo'
 
 const SOCIAL_LINKS = [
     { label: "Instagram", handle: "@rafay.guides", href: "https://instagram.com/rafay.guides" },
@@ -89,6 +91,22 @@ export default function ContactPage() {
     }
 
     return (
+        <>
+            <PageSEO
+                pageKey="contact"
+                title={routeSeo.contact.title}
+                description={routeSeo.contact.description}
+                url={routeSeo.contact.canonical}
+                type="ContactPage"
+                robots={routeSeo.contact.robots}
+                schema={{
+                    '@context': 'https://schema.org',
+                    '@type': 'ContactPage',
+                    name: 'Contact Abdul Rafay Chatriwala',
+                    url: 'https://archatriwala.com/get-in-touch',
+                    description: routeSeo.contact.description
+                }}
+            />
         <main className="contact-page" ref={pageRef}>
 
             {/* ---- Hero ---- */}
@@ -267,5 +285,6 @@ export default function ContactPage() {
                 </a>
             </section>
         </main>
+        </>
     )
 }

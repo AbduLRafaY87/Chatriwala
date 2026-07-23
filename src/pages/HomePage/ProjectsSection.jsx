@@ -7,8 +7,8 @@ import { NavLink } from 'react-router-dom'
 
 // Curated selection & order — pulled from your real project data
 const SHOWCASE_SLUGS = [
+    'beyond-ylc-platform',
     'inbrowser-code-editor',
-    'mun-website',
     'artist-premium-portfolio-website',
     // 'cosmetics-website',
     // 'dental-clinic-website',
@@ -95,8 +95,11 @@ const ProjectsShowcaseSection = () => {
                                 <div className="image">
                                     <img
                                         src={project.image}
-                                        alt={project.title}
+                                        alt={`${project.title} showcase preview`}
                                         loading="lazy"
+                                        decoding="async"
+                                        width="800"
+                                        height="600"
                                     />
                                 </div>
 

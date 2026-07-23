@@ -10,8 +10,8 @@ const LINKS = [
   { to: '/projects', label: 'Projects' },
   { to: '/services', label: 'Services' },
   { to: '/blogs', label: 'Blogs' },
-  { to: '/tools', label: 'Tools' },
-  { to: '/contact', label: 'Contact' },
+  // { to: '/tools', label: 'Tools' },
+  { to: '/get-in-touch', label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -19,6 +19,7 @@ export default function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
+    <header className="site-header">
     <nav className="site-nav" aria-label="Primary navigation">
       <div className="nav-inner">
         <a className="brand" href="/" aria-label="Homepage">
@@ -62,6 +63,7 @@ export default function Navbar() {
       </div>
       <ProjectModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </nav>
+    </header>
   )
 }
 

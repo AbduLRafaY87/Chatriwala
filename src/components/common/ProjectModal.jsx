@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ProjectModal.css';
+import { Link, NavLink } from 'react-router-dom';
 
 const phoneLimits = {
     '+1': 10, '+44': 10, '+61': 9, '+81': 10, '+49': 11, '+33': 9, '+39': 10,
@@ -179,7 +180,7 @@ export default function ProjectModal({ isOpen, onClose }) {
                     <div className="form-group checkbox-group">
                         <label>
                             <input type="checkbox" name="agree" checked={form.agree} onChange={handleChange} />
-                            I accept the <a href="#">Privacy Policy</a>
+                            I accept the <a target='_blank' href="/privacy-policy">Privacy Policy</a>
                         </label>
                     </div>
 

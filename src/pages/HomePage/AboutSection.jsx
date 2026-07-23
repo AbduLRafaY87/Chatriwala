@@ -51,7 +51,7 @@ const AboutSection = () => {
                             <span className="about-frame-dot about-frame-dot-green" />
                             <span className="about-frame-title">rafay.png</span>
                         </div>
-                        <img src={photo} alt="Abdul Rafay Chatriwala" className="about-photo" />
+                        <img src={photo} alt="Portrait of Abdul Rafay Chatriwala" className="about-photo" width="700" height="900" loading="lazy" decoding="async" />
                     </div>
 
                     <div className="about-badge about-badge-role">
@@ -112,16 +112,16 @@ const AboutSection = () => {
                         ))}
                     </div> */}
 
-                    <div className="about-stack">
+                    {/* <div className="about-stack">
                         {STACK.map((tech) => (
                             <span key={tech} className="about-stack-chip">{tech}</span>
                         ))}
-                    </div>
+                    </div> */}
 
-                    <a href="#contact" className="about-cta">
+                    {/* <a href="/get-in-touch" className="about-cta">
                         <span>Let's build something</span>
                         <span className="about-cta-arrow" aria-hidden="true">→</span>
-                    </a>
+                    </a> */}
                 </div>
             </div>
         </section>

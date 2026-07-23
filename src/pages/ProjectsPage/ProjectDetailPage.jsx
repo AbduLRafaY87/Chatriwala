@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import projects from '../../data/projects'
+import PageSEO from '../../components/common/PageSEO.jsx'
 // import './ProjectDetailPage.css'
 
 const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
@@ -91,6 +92,21 @@ const ProjectDetailPage = () => {
     try { hostname = new URL(project.liveLink).hostname } catch { hostname = project.liveLink }
 
     return (
+        <>
+            <PageSEO
+                title={project.title}
+                description={project.description}
+                url={`https://archatriwala.com/projects/${project.slug}`}
+                type="WebPage"
+                robots="index,follow"
+                schema={{
+                    '@context': 'https://schema.org',
+                    '@type': 'WebPage',
+                    name: project.title,
+                    description: project.description,
+                    url: `https://archatriwala.com/projects/${project.slug}`
+                }}
+            />
         <main className="pd-page" ref={pageRef}>
             {/* Scroll progress bar */}
             <div className="pd-progress" style={{ width: `${scrollProgress}%` }} aria-hidden="true" />
@@ -153,7 +169,7 @@ const ProjectDetailPage = () => {
                                 <span className="pd-frame-dot dot-green" />
                                 <span className="pd-frame-url">{hostname}</span>
                             </div>
-                            <img src={project.image} alt={project.title} className="pd-frame-image" />
+                            <img src={project.image} alt={`${project.title} project preview`} className="pd-frame-image" width="1200" height="750" loading="eager" decoding="async" />
                         </div>
                     </div>
                 </section>
@@ -201,14 +217,14 @@ const ProjectDetailPage = () => {
             <section className="pd-nav reveal-on-scroll">
                 <Link to={`/projects/${prevProject.slug}`} className="pd-nav-card">
                     <div className="pd-nav-media">
-                        <img src={prevProject.image} alt={prevProject.title} loading="lazy" />
+                        <img src={prevProject.image} alt={`${prevProject.title} project preview`} loading="lazy" decoding="async" width="600" height="400" />
                     </div>
                     <span className="pd-nav-label">← Previous</span>
                     <span className="pd-nav-title">{prevProject.title}</span>
                 </Link>
                 <Link to={`/projects/${nextProject.slug}`} className="pd-nav-card is-next">
                     <div className="pd-nav-media">
-                        <img src={nextProject.image} alt={nextProject.title} loading="lazy" />
+                        <img src={nextProject.image} alt={`${nextProject.title} project preview`} loading="lazy" decoding="async" width="600" height="400" />
                     </div>
                     <span className="pd-nav-label">Next →</span>
                     <span className="pd-nav-title">{nextProject.title}</span>
@@ -232,6 +248,7 @@ const ProjectDetailPage = () => {
                 </Link>
             </section>
         </main>
+        </>
     )
 }
 
