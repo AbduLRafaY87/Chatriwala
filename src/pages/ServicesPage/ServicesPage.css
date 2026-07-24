@@ -645,3 +645,87 @@
     }
     .service-card { transition: none !important; }
 }
+
+/* ---- Controls row (filters + region toggle) ---- */
+.services-grid-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.services-grid-controls .services-grid-filters {
+    margin-bottom: 0;
+}
+
+/* ---- Region toggle: sliding pill switch ---- */
+.region-toggle {
+    position: relative;
+    display: inline-flex;
+    padding: 0.3rem;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    flex-shrink: 0;
+}
+
+.region-toggle-indicator {
+    position: absolute;
+    top: 0.3rem;
+    left: 0.3rem;
+    width: calc(50% - 0.3rem);
+    height: calc(100% - 0.6rem);
+    background: var(--color-accent);
+    border-radius: 999px;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 0;
+}
+
+.region-toggle-option {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.1rem;
+    background: none;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.region-toggle-option.is-active {
+    color: var(--color-bg);
+}
+
+/* ---- Price crossfade on region switch ---- */
+.service-card-price {
+    animation: priceFade 0.4s ease both;
+}
+
+@keyframes priceFade {
+    from { opacity: 0; transform: translateY(3px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 700px) {
+    .services-grid-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .region-toggle {
+        align-self: flex-start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-card-price { animation: none !important; }
+    .region-toggle-indicator { transition: none !important; }
+}

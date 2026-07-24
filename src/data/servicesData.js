@@ -9,6 +9,8 @@ export const serviceCategories = [
   { id: 'content', label: 'Content' },
 ]
 
+// Every price is stored as structured data per region, not a formatted string.
+// unit: null = one-time project price. 'mo' = monthly. 'article' = per-article. 'project' = per-deliverable.
 export const servicesData = [
   {
     id: 1,
@@ -18,7 +20,10 @@ export const servicesData = [
     text: 'Custom websites built with clean code, SEO best practices, and responsive design.',
     description: 'I build high-performance, scalable websites that engage users and drive conversions. From concept to launch.',
     features: ['React/Vue/Next.js', 'Responsive Design', 'SEO Optimized', 'Performance Focused'],
-    price: '$300 - $600',
+    pricing: {
+      US: { currency: 'USD', min: 2500, max: 5500, unit: null },
+      PK: { currency: 'PKR', min: 70000, max: 160000, unit: null },
+    },
   },
   {
     id: 2,
@@ -28,7 +33,10 @@ export const servicesData = [
     text: 'Custom personal portfolio websites for freelancers, designers, and developers.',
     description: 'Stand out with a stunning portfolio. Showcase your work, skills, and personality in one beautiful place.',
     features: ['Showcase Projects', 'Contact Forms', 'Blog Integration', 'Analytics'],
-    price: '$250 - $500',
+    pricing: {
+      US: { currency: 'USD', min: 1200, max: 2800, unit: null },
+      PK: { currency: 'PKR', min: 35000, max: 75000, unit: null },
+    },
   },
   {
     id: 3,
@@ -38,7 +46,10 @@ export const servicesData = [
     text: 'Secure, affordable hosting and domain setup for your new website.',
     description: 'Get your site online with reliable hosting, SSL security, and 24/7 support. Affordable and hassle-free.',
     features: ['Domain Registration', 'SSL Certificate', 'Backups', '24/7 Support'],
-    price: '$20 - $50/month',
+    pricing: {
+      US: { currency: 'USD', min: 25, max: 60, unit: 'mo' },
+      PK: { currency: 'PKR', min: 4000, max: 9000, unit: 'mo' },
+    },
   },
   {
     id: 4,
@@ -48,7 +59,10 @@ export const servicesData = [
     text: 'Logos, brand kits, and visual identity systems to strengthen your business presence.',
     description: 'Build a cohesive visual identity that resonates with your audience and stands out from competitors.',
     features: ['Logo Design', 'Color Palette', 'Typography', 'Brand Guidelines'],
-    price: '$100 - $300',
+    pricing: {
+      US: { currency: 'USD', min: 1500, max: 4000, unit: null },
+      PK: { currency: 'PKR', min: 30000, max: 70000, unit: null },
+    },
   },
   {
     id: 5,
@@ -58,7 +72,10 @@ export const servicesData = [
     text: 'Modern, mobile-first designs focused on user engagement and conversions.',
     description: 'I create intuitive, beautiful interfaces that users love. Designs backed by research and best practices.',
     features: ['User Research', 'Wireframes', 'Prototypes', 'Usability Testing'],
-    price: '$200 - $500',
+    pricing: {
+      US: { currency: 'USD', min: 2800, max: 6500, unit: null },
+      PK: { currency: 'PKR', min: 60000, max: 140000, unit: null },
+    },
   },
   {
     id: 6,
@@ -68,7 +85,10 @@ export const servicesData = [
     text: 'Unique, professional logos that make your brand instantly recognizable.',
     description: 'Get a memorable logo that captures your brand essence and leaves a lasting impression.',
     features: ['Unlimited Revisions', 'Multiple Concepts', 'Source Files', 'Usage Rights'],
-    price: '$50 - $150',
+    pricing: {
+      US: { currency: 'USD', min: 400, max: 1200, unit: null },
+      PK: { currency: 'PKR', min: 10000, max: 28000, unit: null },
+    },
   },
   {
     id: 7,
@@ -78,7 +98,10 @@ export const servicesData = [
     text: 'High-impact landing pages optimized for lead generation and sales.',
     description: 'Conversion-focused landing pages designed to turn visitors into leads and customers.',
     features: ['Conversion Optimization', 'A/B Testing', 'Mobile Responsive', 'Analytics Setup'],
-    price: '$150 - $350',
+    pricing: {
+      US: { currency: 'USD', min: 900, max: 2200, unit: null },
+      PK: { currency: 'PKR', min: 22000, max: 50000, unit: null },
+    },
   },
   {
     id: 8,
@@ -88,7 +111,10 @@ export const servicesData = [
     text: 'High-converting creatives for Facebook, Instagram, and Google ads.',
     description: 'Eye-catching ad creatives that stop the scroll and drive clicks, leads, and sales.',
     features: ['Multiple Formats', 'A/B Variations', 'Platform Optimization', 'Performance Tracking'],
-    price: '$50 - $150 per project',
+    pricing: {
+      US: { currency: 'USD', min: 180, max: 450, unit: 'project' },
+      PK: { currency: 'PKR', min: 6000, max: 15000, unit: 'project' },
+    },
   },
   {
     id: 9,
@@ -98,17 +124,23 @@ export const servicesData = [
     text: 'On-page SEO, speed optimization, and technical fixes to boost rankings.',
     description: 'Improve your search visibility and rankings with technical SEO, content optimization, and link building.',
     features: ['Keyword Research', 'On-page SEO', 'Speed Optimization', 'Technical Audit'],
-    price: '$150 - $400/month',
+    pricing: {
+      US: { currency: 'USD', min: 500, max: 1400, unit: 'mo' },
+      PK: { currency: 'PKR', min: 18000, max: 45000, unit: 'mo' },
+    },
   },
   {
     id: 10,
     category: 'free',
     icon: Wand2,
     title: 'Free Website Audit',
-    text: 'Get a free report analyzing your site\'s SEO, speed, UX, and performance.',
-    description: 'Find out what\'s holding your site back. Get actionable insights in a detailed audit report.',
+    text: "Get a free report analyzing your site's SEO, speed, UX, and performance.",
+    description: "Find out what's holding your site back. Get actionable insights in a detailed audit report.",
     features: ['SEO Analysis', 'Speed Report', 'UX Review', 'Recommendations'],
-    price: 'FREE',
+    pricing: {
+      US: { isFree: true },
+      PK: { isFree: true },
+    },
   },
   {
     id: 11,
@@ -118,7 +150,10 @@ export const servicesData = [
     text: 'Regular updates, backups, and technical support to keep your site fresh and secure.',
     description: 'Keep your site running smoothly with regular maintenance, updates, and security checks.',
     features: ['Regular Updates', 'Daily Backups', 'Security Monitoring', 'Performance Tuning'],
-    price: '$50 - $150/month',
+    pricing: {
+      US: { currency: 'USD', min: 90, max: 260, unit: 'mo' },
+      PK: { currency: 'PKR', min: 9000, max: 22000, unit: 'mo' },
+    },
   },
   {
     id: 12,
@@ -128,7 +163,10 @@ export const servicesData = [
     text: 'Well-written, SEO-friendly blogs and articles to build your authority.',
     description: 'Establish thought leadership with high-quality, engaging blog posts optimized for search.',
     features: ['SEO Optimization', 'Original Research', 'Proofreading', 'Quick Turnaround'],
-    price: '$20 - $50 per article',
+    pricing: {
+      US: { currency: 'USD', min: 70, max: 180, unit: 'article' },
+      PK: { currency: 'PKR', min: 2500, max: 6500, unit: 'article' },
+    },
   },
   {
     id: 13,
@@ -138,7 +176,10 @@ export const servicesData = [
     text: 'Branded posts, stories, and content calendars for Instagram, LinkedIn and more.',
     description: 'Build an engaged community with consistent, on-brand social media content.',
     features: ['Content Calendar', 'Graphic Design', 'Copywriting', 'Posting Schedule'],
-    price: '$50 - $150/month',
+    pricing: {
+      US: { currency: 'USD', min: 180, max: 450, unit: 'mo' },
+      PK: { currency: 'PKR', min: 14000, max: 32000, unit: 'mo' },
+    },
   },
   {
     id: 14,
@@ -148,7 +189,10 @@ export const servicesData = [
     text: 'Professional resumes and portfolios designed to impress employers and clients.',
     description: 'Stand out in the job market with a professional resume and impressive portfolio.',
     features: ['ATS Optimization', 'Professional Layout', 'Content Strategy', 'Revisions'],
-    price: '$30 - $80',
+    pricing: {
+      US: { currency: 'USD', min: 90, max: 220, unit: null },
+      PK: { currency: 'PKR', min: 4500, max: 11000, unit: null },
+    },
   },
   {
     id: 15,
@@ -158,7 +202,10 @@ export const servicesData = [
     text: 'Boost your personal online brand with tailored visuals and strategies.',
     description: 'Build a powerful personal brand that opens doors and attracts opportunities.',
     features: ['Brand Strategy', 'Visual Identity', 'LinkedIn Optimization', 'Content Plan'],
-    price: '$100 - $300',
+    pricing: {
+      US: { currency: 'USD', min: 350, max: 900, unit: null },
+      PK: { currency: 'PKR', min: 16000, max: 42000, unit: null },
+    },
   },
 ]
 

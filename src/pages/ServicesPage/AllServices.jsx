@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import servicesData, { serviceCategories } from '../../data/servicesData'
+import { formatPrice } from '../../data/formatPrice'
 // import './AllServices.css'
 
-// The two services that anchor the page — core offerings get the large treatment,
-// everything else finds its size based on how central it is to the practice.
 const FEATURED_IDS = [1, 5]
 const MEDIUM_IDS = [2, 4, 9]
 
@@ -41,6 +40,7 @@ const useRevealOnScroll = (deps = []) => {
 const AllServices = () => {
     const [activeCategory, setActiveCategory] = useState('all')
     const [expandedId, setExpandedId] = useState(null)
+    const [region, setRegion] = useState('PK')
     const gridRef = useRevealOnScroll([activeCategory])
 
     const visible = activeCategory === 'all'
@@ -61,35 +61,57 @@ const AllServices = () => {
     return (
         <section className="services-grid-section" ref={gridRef}>
             <div className="services-grid-overlay" aria-hidden="true" />
-            {/* <span className="services-grid-bg-text" aria-hidden="true">CAPABILITIES</span> */}
 
             <div className="services-grid-inner">
                 <div className="services-grid-header reveal-on-scroll">
-                    {/* <p className="services-grid-eyebrow">// what I can build</p>
-                    <h2 className="services-grid-headline">
-                        Every service is a piece
-                        <span className="services-grid-headline-accent">of the same product.</span>
-                    </h2> */}
                     <p className="services-grid-sub">
                         Fifteen capabilities, one practice — pick a category or scroll
                         the full range.
                     </p>
                 </div>
 
-                {/* Category filters */}
-                <div className="services-grid-filters reveal-on-scroll" role="tablist">
-                    {serviceCategories.map((cat) => (
+                {/* ---- Controls row: category filters + region toggle ---- */}
+                <div className="services-grid-controls reveal-on-scroll">
+                    <div className="services-grid-filters" role="tablist">
+                        {serviceCategories.map((cat) => (
+                            <button
+                                key={cat.id}
+                                role="tab"
+                                type="button"
+                                aria-selected={activeCategory === cat.id}
+                                className={`services-grid-filter ${activeCategory === cat.id ? 'is-active' : ''}`}
+                                onClick={() => setActiveCategory(cat.id)}
+                            >
+                                {cat.label}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="region-toggle" role="tablist" aria-label="Pricing region">
                         <button
-                            key={cat.id}
-                            role="tab"
                             type="button"
-                            aria-selected={activeCategory === cat.id}
-                            className={`services-grid-filter ${activeCategory === cat.id ? 'is-active' : ''}`}
-                            onClick={() => setActiveCategory(cat.id)}
+                            role="tab"
+                            aria-selected={region === 'PK'}
+                            className={`region-toggle-option ${region === 'PK' ? 'is-active' : ''}`}
+                            onClick={() => setRegion('PK')}
                         >
-                            {cat.label}
+                            <span aria-hidden="true">🇵🇰</span> PKR
                         </button>
-                    ))}
+                        <button
+                            type="button"
+                            role="tab"
+                            aria-selected={region === 'US'}
+                            className={`region-toggle-option ${region === 'US' ? 'is-active' : ''}`}
+                            onClick={() => setRegion('US')}
+                        >
+                            <span aria-hidden="true">🇺🇸</span> USD
+                        </button>
+                        <span
+                            className="region-toggle-indicator"
+                            style={{ transform: region === 'PK' ? 'translateX(0%)' : 'translateX(100%)' }}
+                            aria-hidden="true"
+                        />
+                    </div>
                 </div>
 
                 {/* Bento grid */}
@@ -140,7 +162,9 @@ const AllServices = () => {
                                     </div>
 
                                     <div className="service-card-footer">
-                                        <span className="service-card-price">{service.price}</span>
+                                        <span className="service-card-price" key={region}>
+                                            {formatPrice(service.pricing, region)}
+                                        </span>
                                         <span className="service-card-toggle">
                                             {isExpanded ? 'Show less' : 'Learn more'}
                                             <span aria-hidden="true">{isExpanded ? '−' : '+'}</span>
@@ -159,7 +183,7 @@ const AllServices = () => {
                         Need something custom?
                         <span className="services-grid-closing-accent">Let's build it together.</span>
                     </h3>
-                    <Link to="/contact" className="services-grid-cta">
+                    <Link to="/get-in-touch" className="services-grid-cta">
                         <span>Start a Project</span>
                         <span aria-hidden="true">→</span>
                     </Link>
