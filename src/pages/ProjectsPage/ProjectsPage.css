@@ -592,7 +592,7 @@
     align-items: center;
     /* background: var(--color-bg-elevated-2); */
     border-radius: 12px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     padding: 2rem 3rem;
 }
 

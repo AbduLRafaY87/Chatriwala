@@ -8,28 +8,46 @@
   scroll-behavior: smooth;
 }
 
+/* Dark Theme (Default) */
 :root {
-  /* Colors */
-  --color-bg: #0b0e14; /* deep editor-black background */
-  --color-bg-elevated: #11151c; /* cards, panels */
-  --color-bg-elevated-2: #171c25; /* hover / nested surfaces */
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-strong: rgba(255, 255, 255, 0.16);
+  --color-bg: #0b0e14;
+  --color-bg-elevated: #11151c;
+  --color-bg-elevated-2: #171c25;
 
-  --color-text: #e6e8eb; /* primary text */
-  --color-text-muted: #8b93a1; /* secondary text */
-  --color-text-faint: #565d6b; /* placeholders, disabled */
+  --color-border: rgba(255,255,255,.08);
+  --color-border-strong: rgba(255,255,255,.16);
 
-  --color-accent: #f5a623; /* amber — primary accent, CTAs */
+  --color-text: #e6e8eb;
+  --color-text-muted: #8b93a1;
+  --color-text-faint: #565d6b;
+
+  --color-accent: #f5a623;
   --color-accent-hover: #ffb949;
-  --color-accent-secondary: #5fd4d0; /* soft teal — links, highlights */
+  --color-accent-secondary: #5fd4d0;
+
   --color-success: #6fcf97;
   --color-error: #eb5757;
+}
 
-  /* Typography */
-  --font-display: "JetBrains Mono", "Fira Code", monospace;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+/* Light Theme */
+[data-theme="light"] {
+  --color-bg: #f8fafc;
+  --color-bg-elevated: #ffffff;
+  --color-bg-elevated-2: #f1f5f9;
+
+  --color-border: rgba(15,23,42,.08);
+  --color-border-strong: rgba(15,23,42,.16);
+
+  --color-text: #111827;
+  --color-text-muted: #4b5563;
+  --color-text-faint: #94a3b8;
+
+  --color-accent: #f59e0b;
+  --color-accent-hover: #d97706;
+  --color-accent-secondary: #0ea5a4;
+
+  --color-success: #16a34a;
+  --color-error: #dc2626;
 }
 
 html,
@@ -42,4 +60,17 @@ body {
 
 main{
   margin-top: -100px;
+}
+
+body,
+.nav-inner,
+.nav-link,
+.email-pill,
+.theme-toggle,
+[class] {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
