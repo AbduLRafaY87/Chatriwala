@@ -77,7 +77,7 @@ const AboutSection = () => {
                     <div className="about-story">
                         <p>
                             Abdul Rafay Chatriwala is a MERN stack developer and the
-                            co-founder of Prime Creators, where he leads the technical
+                            Founder of Chatriwala, where he leads the technical
                             side of building fast, scalable web applications that solve
                             real problems — not just ones that look good in a portfolio.
                         </p>
