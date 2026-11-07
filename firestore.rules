@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ['REPLACE_WITH_ADMIN_EMAIL'];
+    }
+
+    match /blogs/{blogId} {
+      allow read: if resource.data.status == 'published' || isAdmin();
+      allow create, update: if isAdmin()
+        && request.resource.data.status in ['draft', 'published'];
+      allow delete: if isAdmin();
+    }
+  }
+}

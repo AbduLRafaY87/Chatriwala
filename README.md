@@ -1,17 +1,44 @@
-# React + Vite
+# Chatriwala
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Blog publishing
 
-Currently, two official plugins are available:
+The public blog lives at `/blogs`; the private publishing dashboard is at `/admin`.
+The blog works without Firebase and continues to show the existing sample articles.
+After Firebase is connected, published Firestore articles appear alongside those
+articles. Drafts are only visible in the admin dashboard.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Connect Firebase
 
-## React Compiler
+1. Create a Firebase project and register a Web app.
+2. Enable **Authentication → Email/Password**, create your admin account, and
+   verify its email address.
+3. Create a Cloud Firestore database and enable Firebase Storage.
+4. In `src/lib/firebase.js`, replace each `REPLACE_WITH_…` configuration value
+   with the Firebase Web app settings, and replace `REPLACE_WITH_ADMIN_EMAIL`
+   with the verified admin email address.
+5. Replace the same admin email placeholder in both `firestore.rules` and
+   `storage.rules`, then publish those rules in the Firebase console (or deploy
+   them with the Firebase CLI).
+6. Open `/admin` and sign in with that verified account.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Firebase Web app configuration is client-side configuration, not a way to
+secure admin access. The Firestore and Storage rules enforce access: published
+articles can be read publicly, while writes and draft access require the
+verified allowlisted admin account. Never deploy with the placeholder rules or
+leave test-mode Firebase rules enabled.
 
-## Expanding the ESLint configuration
+### Publishing features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-"# Chatriwala" 
+- Create, edit, publish, and delete posts; save drafts without exposing them
+  publicly.
+- Upload a cover image to Firebase Storage (up to 5 MB) or provide an image URL.
+- Add categories, comma-separated tags, excerpts, and optional YouTube URLs.
+- Article content uses blank lines for paragraphs, `## Heading` / `### Heading`
+  for headings, and `- List item` for unordered lists. A valid YouTube link is
+  rendered in a privacy-enhanced embed.
+- The public blog includes category filters, search across titles/descriptions/
+  tags, newest/oldest sorting, related articles, reading time, and copy-link
+  sharing.
+
+Run locally with `npm run dev`. Run `npm run lint` and `npm run build` to check
+the application.

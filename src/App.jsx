@@ -18,6 +18,7 @@ import ContactPage from './pages/ContactPage/ContactPage.jsx'
 import BlogDetail from './pages/BlogsPage/BlogDetail.jsx'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx'
 import PrivacyPolicy from './pages/LegalPage/PrivacyPolicy.jsx'
+import AdminPage from './pages/BlogsPage/AdminPage.jsx'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/services" element={<PageSEO pageKey="Services"><ServicesPage /></PageSEO>} />
           <Route path="/blogs" element={<PageSEO pageKey="Blogs"><BlogsPage /></PageSEO>} />
           <Route path="/blogs/:id" element={<PageSEO pageKey="Blogs"><BlogDetail /></PageSEO>} />
+          <Route path="/admin" element={<PageSEO pageKey="Blogs" title="Blog Admin" description="Private blog publishing dashboard." robots="noindex,nofollow"><AdminPage /></PageSEO>} />
           <Route path="/tools" element={<PageSEO pageKey="Tools"><ToolsPage /></PageSEO>} />
           <Route path="/get-in-touch" element={<PageSEO pageKey="Contact"><ContactPage /></PageSEO>} />
           <Route path="/privacy-policy" element={<PageSEO pageKey="Privacy"><PrivacyPolicy /></PageSEO>} />
@@ -45,4 +47,3 @@ function App() {
 }
 
 export default App
-

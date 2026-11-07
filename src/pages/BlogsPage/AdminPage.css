@@ -1,0 +1,78 @@
+.admin-page {
+    min-height: 100vh;
+    padding: 9rem 5vw 6rem;
+    background:
+        radial-gradient(ellipse at 10% 0%, rgba(95, 212, 208, .08), transparent 36rem),
+        var(--color-bg);
+    color: var(--color-text);
+}
+
+.admin-shell { max-width: 1440px; margin: 0 auto; }
+.admin-setup, .admin-login { width: min(100%, 500px); margin: 4rem auto; }
+.admin-setup h1, .admin-login h1, .admin-header h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: -.05em; }
+.admin-setup p:not(.admin-kicker), .admin-intro { color: var(--color-text-muted); line-height: 1.7; margin: 1rem 0 1.5rem; }
+.admin-setup code { color: var(--color-accent-secondary); }
+.admin-kicker { color: var(--color-accent-secondary); font-size: .73rem; font-weight: 700; letter-spacing: .16em; margin-bottom: .8rem; }
+.admin-back-link, .admin-secondary-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--color-text-muted); text-decoration: none; font-size: .86rem; }
+.admin-back-link { margin-bottom: 3rem; }
+.admin-back-link:hover, .admin-secondary-link:hover { color: var(--color-accent); }
+.admin-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 2.5rem; }
+.admin-header-actions { display: flex; align-items: center; gap: 1.25rem; }
+.admin-logout, .admin-text-button { display: inline-flex; align-items: center; gap: .5rem; border: 0; background: none; color: var(--color-text-muted); cursor: pointer; font: inherit; }
+.admin-logout:hover, .admin-text-button:hover { color: var(--color-accent); }
+.admin-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .75fr); align-items: start; gap: 1.4rem; }
+.admin-editor, .admin-posts, .admin-login, .admin-setup { padding: clamp(1.25rem, 3vw, 2rem); background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: 20px; }
+.admin-login, .admin-setup { box-shadow: 0 26px 90px rgba(0,0,0,.2); }
+.admin-editor-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.7rem; }
+.admin-editor-heading h2 { font-size: 1.35rem; }
+.admin-editor-heading h2 span { color: var(--color-text-faint); font-size: .9rem; }
+.admin-field { display: flex; flex-direction: column; gap: .55rem; margin: 0 0 1.2rem; color: var(--color-text); font-size: .88rem; font-weight: 600; }
+.admin-field > span:not(.admin-label) { color: var(--color-text-faint); font-size: .78rem; font-weight: 400; }
+.admin-field input, .admin-field textarea, .admin-field select {
+    width: 100%; padding: .85rem 1rem; border: 1px solid var(--color-border-strong); border-radius: 10px;
+    outline: none; background: var(--color-bg); color: var(--color-text); font: 400 .9rem "Space Grotesk", sans-serif;
+}
+.admin-field textarea { resize: vertical; line-height: 1.65; }
+.admin-field input:focus, .admin-field textarea:focus, .admin-field select:focus { border-color: var(--color-accent-secondary); box-shadow: 0 0 0 3px rgba(95,212,208,.1); }
+.admin-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.admin-upload { display: flex; align-items: center; gap: .7rem; padding: 1rem; border: 1px dashed var(--color-border-strong); border-radius: 10px; color: var(--color-text-muted); cursor: pointer; font-size: .82rem; }
+.admin-upload:hover { border-color: var(--color-accent-secondary); color: var(--color-accent-secondary); }
+.admin-upload input { display: none; }
+.admin-image-preview { display: block; width: 100%; max-height: 250px; margin: -.3rem 0 1.2rem; border-radius: 12px; object-fit: cover; }
+.admin-content-input { min-height: 300px; }
+.admin-editor-hint { margin: -.6rem 0 1.3rem; color: var(--color-text-faint); font-size: .78rem; line-height: 1.5; }
+.admin-editor-actions { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.admin-status-field { width: min(230px, 55%); margin-bottom: 0; }
+.admin-primary-button { display: inline-flex; justify-content: center; align-items: center; gap: .6rem; padding: .9rem 1.2rem; border: 0; border-radius: 10px; background: var(--color-accent); color: #141414; cursor: pointer; font: 700 .88rem "Space Grotesk", sans-serif; transition: transform .2s, opacity .2s; }
+.admin-primary-button:hover:not(:disabled) { transform: translateY(-2px); }
+.admin-primary-button:disabled { cursor: wait; opacity: .6; }
+.admin-add-button, .admin-post-actions button { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--color-border); border-radius: 9px; background: transparent; color: var(--color-text-muted); cursor: pointer; }
+.admin-add-button:hover, .admin-post-actions button:hover { color: var(--color-accent); border-color: var(--color-accent); }
+.admin-empty, .admin-loading { padding: 2rem 0; color: var(--color-text-faint); text-align: center; font-size: .88rem; }
+.admin-post-list { display: grid; }
+.admin-post-row { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; align-items: center; gap: .8rem; padding: 1rem 0; border-top: 1px solid var(--color-border); }
+.admin-post-thumb { display: grid; place-items: center; width: 58px; height: 54px; overflow: hidden; border-radius: 8px; background: var(--color-bg-elevated-2); color: var(--color-text-faint); }
+.admin-post-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.admin-post-info { min-width: 0; }
+.admin-post-status { display: inline-block; margin-bottom: .25rem; padding: .15rem .4rem; border-radius: 999px; background: rgba(245,166,35,.1); color: var(--color-accent); font-size: .62rem; text-transform: uppercase; }
+.admin-post-status.is-published { background: rgba(111,207,151,.1); color: var(--color-success); }
+.admin-post-info h3 { overflow: hidden; color: var(--color-text); font-size: .84rem; text-overflow: ellipsis; white-space: nowrap; }
+.admin-post-info p { margin-top: .2rem; color: var(--color-text-faint); font-size: .72rem; }
+.admin-post-actions { display: flex; gap: .35rem; }
+.admin-post-actions button { width: 31px; height: 31px; }
+.admin-alert { margin: 0 0 1.2rem; padding: .8rem 1rem; border: 1px solid var(--color-border); border-radius: 10px; font-size: .85rem; line-height: 1.5; }
+.admin-alert.is-error { border-color: rgba(235,87,87,.3); background: rgba(235,87,87,.08); color: var(--color-error); }
+.admin-alert.is-success { border-color: rgba(111,207,151,.3); background: rgba(111,207,151,.08); color: var(--color-success); }
+
+@media (max-width: 900px) {
+    .admin-layout { grid-template-columns: 1fr; }
+    .admin-posts { order: 2; }
+}
+@media (max-width: 600px) {
+    .admin-page { padding: 7rem 4vw 4rem; }
+    .admin-header { align-items: flex-start; flex-direction: column; }
+    .admin-header-actions { width: 100%; justify-content: space-between; }
+    .admin-field-row { grid-template-columns: 1fr; gap: 0; }
+    .admin-editor-actions { align-items: stretch; flex-direction: column; }
+    .admin-status-field { width: 100%; }
+}

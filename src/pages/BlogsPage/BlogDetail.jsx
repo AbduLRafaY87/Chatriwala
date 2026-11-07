@@ -1,15 +1,61 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
-import blogs from '../../data/blogData'
+import { Check, Copy } from 'lucide-react'
+import useBlogs from '../../hooks/useBlogs'
 import PageSEO from '../../components/common/PageSEO.jsx'
+import './BlogsPage.css'
 
 const formatDate = (dateStr) =>
     new Date(dateStr).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
 
+const getYoutubeEmbedUrl = (value) => {
+    if (!value) return ''
+    try {
+        const url = new URL(value)
+        let id = ''
+        if (url.hostname === 'youtu.be') id = url.pathname.slice(1)
+        if (['www.youtube.com', 'youtube.com', 'm.youtube.com'].includes(url.hostname)) {
+            id = url.pathname === '/watch' ? url.searchParams.get('v') : url.pathname.match(/^\/(?:embed|shorts)\/([^/]+)/)?.[1]
+        }
+        return id && /^[\w-]{11}$/.test(id) ? `https://www.youtube-nocookie.com/embed/${id}` : ''
+    } catch {
+        return ''
+    }
+}
+
+const ArticleBody = ({ post }) => {
+    if (post.fullContent) {
+        return <div className="blog-detail-content" dangerouslySetInnerHTML={{ __html: post.fullContent }} />
+    }
+
+    const paragraphs = (post.content || '').split(/\n\s*\n/).map((part) => part.trim()).filter(Boolean)
+    const videoUrl = getYoutubeEmbedUrl(post.youtubeUrl)
+
+    return (
+        <article className="blog-detail-content">
+            {paragraphs.map((paragraph, index) => {
+                if (paragraph.startsWith('## ')) return <h2 key={index}>{paragraph.slice(3)}</h2>
+                if (paragraph.startsWith('### ')) return <h3 key={index}>{paragraph.slice(4)}</h3>
+                if (paragraph.split('\n').every((line) => /^[-*]\s/.test(line))) {
+                    return <ul key={index}>{paragraph.split('\n').map((line, itemIndex) => <li key={itemIndex}>{line.replace(/^[-*]\s/, '')}</li>)}</ul>
+                }
+                return <p key={index}>{paragraph.split('\n').map((line, lineIndex) => <React.Fragment key={lineIndex}>{lineIndex > 0 && <br />}{line}</React.Fragment>)}</p>
+            })}
+            {videoUrl && (
+                <div className="blog-video-embed">
+                    <iframe src={videoUrl} title={`${post.title} video`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+                </div>
+            )}
+        </article>
+    )
+}
+
 const BlogDetail = () => {
     const { id } = useParams()
     const [progress, setProgress] = useState(0)
+    const [copied, setCopied] = useState(false)
     const pageRef = useRef(null)
+    const { blogs, loading } = useBlogs()
 
     const sorted = [...blogs].sort((a, b) => new Date(b.date) - new Date(a.date))
     const index = sorted.findIndex((b) => String(b.id) === id)
@@ -46,10 +92,11 @@ const BlogDetail = () => {
         return () => observer.disconnect()
     }, [post])
 
+    if (!post && loading) return <main className="blog-detail-page"><p className="blogs-empty">Loading article…</p></main>
     if (!post) return <Navigate to="/blogs" replace />
 
-    const prevPost = sorted[(index - 1 + sorted.length) % sorted.length]
-    const nextPost = sorted[(index + 1) % sorted.length]
+    const related = sorted.filter((blog) => blog.id !== post.id && blog.category === post.category).slice(0, 3)
+    const canonicalImage = post.img?.startsWith('http') ? post.img : `https://archatriwala.com${post.img || ''}`
 
     return (
         <>
@@ -69,7 +116,7 @@ const BlogDetail = () => {
                         name: post.writer
                     },
                     datePublished: post.date,
-                    image: `https://archatriwala.com${post.img}`,
+                    image: canonicalImage,
                     url: `https://archatriwala.com/blogs/${post.id}`
                 }}
             />
@@ -100,14 +147,26 @@ const BlogDetail = () => {
 
             {/* ---- Cover image ---- */}
             <section className="blog-detail-cover reveal-on-scroll">
-                <img src={post.img} alt={post.title} width="1400" height="900" loading="eager" decoding="async" />
+                {post.img && <img src={post.img} alt={post.title} width="1400" height="900" loading="eager" decoding="async" />}
             </section>
 
             {/* ---- Article body ---- */}
-            <article
-                className="blog-detail-content reveal-on-scroll"
-                dangerouslySetInnerHTML={{ __html: post.fullContent }}
-            />
+            <div className="reveal-on-scroll"><ArticleBody post={post} /></div>
+
+            {Array.isArray(post.tags) && post.tags.length > 0 && (
+                <div className="blog-detail-tags">{post.tags.map((tag) => <span key={tag}>#{tag}</span>)}</div>
+            )}
+            <div className="blog-detail-share">
+                <button type="button" onClick={async () => {
+                    try {
+                        await navigator.clipboard.writeText(window.location.href)
+                        setCopied(true)
+                        window.setTimeout(() => setCopied(false), 1800)
+                    } catch (shareError) {
+                        console.error('Unable to copy article link:', shareError)
+                    }
+                }}>{copied ? <Check size={16} /> : <Copy size={16} />}{copied ? 'Link copied' : 'Copy article link'}</button>
+            </div>
 
             {/* ---- Author note ---- */}
             <section className="blog-detail-author reveal-on-scroll">
@@ -119,16 +178,16 @@ const BlogDetail = () => {
             </section>
 
             {/* ---- Prev / Next ---- */}
-            <section className="blog-detail-nav reveal-on-scroll">
-                <Link to={`/blogs/${prevPost.id}`} className="blog-nav-card">
-                    <span className="blog-nav-label">← Previous</span>
-                    <span className="blog-nav-title">{prevPost.title}</span>
-                </Link>
-                <Link to={`/blogs/${nextPost.id}`} className="blog-nav-card is-next">
-                    <span className="blog-nav-label">Next →</span>
-                    <span className="blog-nav-title">{nextPost.title}</span>
-                </Link>
-            </section>
+            {related.length > 0 && <section className="blog-related reveal-on-scroll">
+                <p className="blogs-eyebrow">// keep exploring</p>
+                <h2>More in {post.category}</h2>
+                <div className="blog-related-grid">{related.map((blog) => (
+                    <Link to={`/blogs/${blog.id}`} key={blog.id} className="blog-related-card">
+                        {blog.img && <img src={blog.img} alt="" loading="lazy" />}
+                        <span>{blog.category}</span><h3>{blog.title}</h3>
+                    </Link>
+                ))}</div>
+            </section>}
         </main>
         </>
     )

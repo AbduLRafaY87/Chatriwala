@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import blogs from '../../data/blogData'
+import { Search } from 'lucide-react'
+import useBlogs from '../../hooks/useBlogs'
 import './BlogsPage.css'
 import PageSEO from '../../components/common/PageSEO.jsx'
 import { routeSeo } from '../../seo/routeSeo'
@@ -10,13 +11,19 @@ const formatDate = (dateStr) =>
 
 export default function BlogsPage() {
     const [activeTopic, setActiveTopic] = useState('all')
+    const [search, setSearch] = useState('')
+    const [sortOrder, setSortOrder] = useState('newest')
+    const { blogs, error, loading } = useBlogs()
 
-    const sorted = [...blogs].sort((a, b) => new Date(b.date) - new Date(a.date))
+    const topics = ['all', ...new Set(blogs.map((blog) => blog.category).filter(Boolean))]
+    const sorted = useMemo(() => blogs
+        .filter((blog) => activeTopic === 'all' || blog.category === activeTopic)
+        .filter((blog) => `${blog.title} ${blog.excerpt} ${blog.category} ${(blog.tags || []).join(' ')}`.toLowerCase().includes(search.trim().toLowerCase()))
+        .sort((a, b) => sortOrder === 'newest'
+            ? new Date(b.date) - new Date(a.date)
+            : new Date(a.date) - new Date(b.date)), [activeTopic, blogs, search, sortOrder])
     const featured = sorted[0]
-    const rest = sorted.slice(1)
-
-    const topics = ['all', ...new Set(blogs.map((b) => b.category))]
-    const visible = activeTopic === 'all' ? rest : rest.filter((b) => b.category === activeTopic)
+    const visible = sorted.slice(1)
 
     const handleGlow = (e) => {
         const card = e.currentTarget
@@ -61,8 +68,10 @@ export default function BlogsPage() {
                 </div>
             </section>
 
+            {error && <p className="blogs-load-note" role="status">{error}</p>}
+
             {/* ---- Featured story ---- */}
-            <section className="blogs-featured-wrap">
+            {featured && <section className="blogs-featured-wrap">
                 <Link
                     to={`/blogs/${featured.id}`}
                     className="blogs-featured"
@@ -88,10 +97,24 @@ export default function BlogsPage() {
                         </div>
                     </div>
                 </Link>
-            </section>
+            </section>}
 
             {/* ---- Topic cloud (not filter buttons) ---- */}
             <section className="blogs-body">
+                <div className="blogs-tools">
+                    <label className="blogs-search">
+                        <Search size={18} aria-hidden="true" />
+                        <input type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search articles…" aria-label="Search articles" />
+                    </label>
+                    <label className="blogs-sort">
+                        <span>Sort</span>
+                        <select value={sortOrder} onChange={(event) => setSortOrder(event.target.value)} aria-label="Sort articles">
+                            <option value="newest">Newest first</option>
+                            <option value="oldest">Oldest first</option>
+                        </select>
+                    </label>
+                </div>
+
                 <div className="blogs-topics">
                     <span className="blogs-topics-label">Browse by</span>
                     {topics.map((topic) => (
@@ -134,7 +157,7 @@ export default function BlogsPage() {
                 </div>
 
                 {visible.length === 0 && (
-                    <p className="blogs-empty">No articles in this topic yet.</p>
+                    <p className="blogs-empty">{loading ? 'Loading the latest articles…' : search ? 'No articles match your search.' : 'No articles in this topic yet.'}</p>
                 )}
             </section>
 
