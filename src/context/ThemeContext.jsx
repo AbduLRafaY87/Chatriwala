@@ -4,11 +4,8 @@ const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    // Check localStorage first
     const stored = localStorage.getItem('chatriwala-theme')
     if (stored === 'light' || stored === 'dark') return stored
-    // Fall back to system preference
-    if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
     return 'dark'
   })
 
