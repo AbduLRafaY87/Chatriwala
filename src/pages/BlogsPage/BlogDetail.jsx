@@ -147,7 +147,7 @@ const BlogDetail = () => {
 
             {/* ---- Cover image ---- */}
             <section className="blog-detail-cover reveal-on-scroll">
-                {post.img && <img src={post.img} alt={post.title} width="1400" height="900" loading="eager" decoding="async" />}
+                {post.img && <img src={post.img} alt={post.title} width="1400" height="auto" loading="eager" decoding="async" />}
             </section>
 
             {/* ---- Article body ---- */}
