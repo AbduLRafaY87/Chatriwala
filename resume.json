@@ -1,0 +1,136 @@
+{
+  "name": "Abdul Rafay Chatriwala",
+  "contact": {
+    "location": "Karachi, Pakistan",
+    "phone": null,
+    "email": null,
+    "website": "https://archatriwala.com"
+  },
+  "socialLinks": {
+    "linkedin": "https://www.linkedin.com/in/abdul-rafay-sajjad/",
+    "github": "https://github.com/AbduLRafaY87/",
+    "instagram": "https://instagram.com/rafay.guides",
+    "twitter": "https://twitter.com/archatriwala"
+  },
+  "professionalSummary": "MERN stack and full-stack developer, founder of Chatriwala, and co-founder of Prime Creators. Builds fast, accessible, and scalable web applications and digital experiences, combining clean code with thoughtful design. Experience includes web development, accessible products, client websites, and teaching web development fundamentals.",
+  "professionalExperience": [
+    {
+      "projectName": "Development pipeline",
+      "organization": "School Of Leadership",
+      "designation": "Lead Developer",
+      "timeline": "Jan 2026 – May 2026",
+      "summary": "Led the move from manual, email-based project tracking to a structured development pipeline to improve team coordination and delivery consistency."
+    },
+    {
+      "projectName": "Accessible web app",
+      "organization": "ConnectHear",
+      "designation": "Full-Stack Developer Intern",
+      "timeline": "Jun 2025 – Jul 2025",
+      "summary": "Built a React and Node.js web app for deaf and hard-of-hearing users, with real-time transcription, performance improvements, and accessibility-focused UX."
+    },
+    {
+      "projectName": "Client web and branding projects",
+      "organization": "Prime Creators",
+      "designation": "Co-Founder",
+      "timeline": "2024 – Present",
+      "summary": "Leads technical direction for a creative agency delivering branding and web solutions, including client projects and web applications."
+    },
+    {
+      "projectName": "Web development and design courses",
+      "organization": "Mughal Collegiate",
+      "designation": "Course Instructor",
+      "timeline": "2023 – 2024",
+      "summary": "Taught web development and design fundamentals through hands-on lessons and projects."
+    },
+    {
+      "projectName": "Club website improvements",
+      "organization": "TechTics Club",
+      "designation": "Web Developer Intern",
+      "timeline": "2022 – 2023",
+      "summary": "Improved the club website and implemented responsive features."
+    }
+  ],
+  "skillsSummary": {
+    "frontend": [
+      "React.js",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Tailwind CSS",
+      "Next.js",
+      "Framer Motion"
+    ],
+    "backend": [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "PostgreSQL",
+      "Firebase",
+      "RESTful APIs"
+    ],
+    "design": [
+      "Figma",
+      "UI/UX Design",
+      "Responsive Design",
+      "Wireframing",
+      "Prototyping",
+      "Design Systems"
+    ],
+    "toolsAndDeployment": [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Docker",
+      "NPM",
+      "Yarn",
+      "Vite",
+      "Postman",
+      "Vercel",
+      "AWS",
+      "Netlify",
+      "Linux",
+      "CI/CD"
+    ],
+    "other": [
+      "SEO",
+      "Performance Optimization",
+      "Testing",
+      "Web Security",
+      "Content Creation",
+      "Video Editing"
+    ]
+  },
+  "certifications": [
+    {
+      "name": "Microsoft Office Specialist (MOS 200)",
+      "issuer": "Microsoft",
+      "year": "2025",
+      "type": "Certification"
+    },
+    {
+      "name": "ProBattle '26 Web Development Winner — 1st Position",
+      "issuer": "IBA Computer Science Society",
+      "year": "2026",
+      "type": "Competition Award"
+    },
+    {
+      "name": "Robofest 2025 Web Development (HTML/CSS/JavaScript) Using AI — 1st Position",
+      "issuer": "TechTics Club, Beaconhouse PECHS Campus",
+      "year": "2025",
+      "type": "Competition Award"
+    },
+    {
+      "name": "National Digital Learning Competition — Problem Solving",
+      "issuer": "Knowledge Platform",
+      "year": "2024",
+      "type": "Certificate of Appreciation"
+    },
+    {
+      "name": "Robofest 2023 Web Development (HTML/CSS) — 3rd Position",
+      "issuer": "TechTics Club, Generation's School (South Campus)",
+      "year": "2023",
+      "type": "Competition Award"
+    }
+  ],
+  "education": []
+}

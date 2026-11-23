@@ -7,11 +7,11 @@ const SOCIAL_LINKS = [
     { label: "Instagram", handle: "@rafay.guides", href: "https://instagram.com/rafay.guides" },
     { label: "LinkedIn", handle: "/in/abdul-rafay-sajjad", href: "https://www.linkedin.com/in/abdul-rafay-sajjad/" },
     { label: "Twitter", handle: "@archatriwala", href: "https://twitter.com/archatriwala" },
-    { label: "GitHub", handle: "@yourhandle", href: "#" }, // TODO: confirm real handle
+    { label: "GitHub", handle: "/Abdulrafay87", href: "https://github.com/Abdulrafay87" }, 
 ]
 
 const CONTACT_INFO = [
-    { label: "Email", value: "hello@archatriwala.com", href: "mailto:hello@archatriwala.com" }, // TODO: confirm real email
+    { label: "Email", value: "hello@archatriwala.com", href: "mailto:hello@archatriwala.com" },
     { label: "Location", value: "Karachi, Pakistan", href: null },
     { label: "Availability", value: "Now booking new projects", href: null },
 ]
